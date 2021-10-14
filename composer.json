@@ -1,0 +1,21 @@
+{
+    "name": "ashwinncj/bbit",
+    "description": "Interview Management System",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ashwinncj\\Bbit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ashwin Kumar",
+            "email": "ashwinncj@gmail.com"
+        }
+    ],
+    "require": {}
+}
