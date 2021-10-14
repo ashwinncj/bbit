@@ -3,8 +3,7 @@ define('BBIT_ACCESS', true );
 
 require_once './src/Auth.php';
 
-
-$request = $_SERVER['REQUEST_URI'];
+$request = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "?"));
 
 switch ($request) {
     case '/' :
