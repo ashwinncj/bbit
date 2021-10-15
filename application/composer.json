@@ -1,0 +1,19 @@
+{
+    "name": "bbit/app",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bbit\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ashwin Kumar",
+            "email": "ashwinncj@gmail.com"
+        }
+    ],
+    "require": {}
+}
