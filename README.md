@@ -1,2 +1,0 @@
-# bbit
-Interview Management System

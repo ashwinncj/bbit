@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  api-server:
+    container_name: bbit-api-server
+    image: php:8.0-apache
+    volumes:
+      - ./api-server:/var/www/html/
+    ports:
+      - 9000:80
+
+  application:
+    container_name: bbit-app
+    image: php:8.0-apache
+    volumes:
+      - ./application:/var/www/html/
+    ports:
+      - 8000:80
