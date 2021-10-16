@@ -2,11 +2,22 @@ version: '3.8'
 services:
   api-server:
     container_name: bbit-api-server
-    image: php:8.0-apache
+    build: 
+      context: ./api-server
+      dockerfile: Dockerfile
     volumes:
       - ./api-server:/var/www/html/
+    links:
+     - db
+    environment:
+      BBIT_DB_HOST: ${BBIT_DB_HOST}
+      BBIT_DB_USER: ${BBIT_DB_USER}
+      BBIT_DB_PASSWORD: ${BBIT_DB_PASSWORD}
+      BBIT_DB_NAME: ${BBIT_DB_NAME}
+      BBIT_DB_PORT: ${BBIT_DB_PORT}
     ports:
       - 9000:80
+    #command: bash -c "apt-get update && docker-php-ext-install mysqli && docker-php-ext-enable mysqli && apachectl restart"
 
   application:
     container_name: bbit-app
@@ -20,10 +31,10 @@ services:
     image: mysql:5.7
     container_name: bbit-db
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: bbit_db
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${BBIT_DB_NAME}
+      MYSQL_USER: ${BBIT_DB_USER}
+      MYSQL_PASSWORD: ${BBIT_DB_PASSWORD}
     ports:
       - "6033:3306"
     volumes:
