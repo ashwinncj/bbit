@@ -1,9 +1,9 @@
 <?php
 
-use Bbit\Api\Auth;
+use Bbit\Api\Candidate\Candidate;
 
 require 'vendor/autoload.php';
 
 define('BBIT_API', true);
 
-Auth::authenticate('test');
+Candidate::view();

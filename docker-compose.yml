@@ -15,3 +15,31 @@ services:
       - ./application:/var/www/html/
     ports:
       - 8000:80
+
+  db:
+    image: mysql:5.7
+    container_name: bbit-db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: bbit_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    ports:
+      - "6033:3306"
+    volumes:
+      - /var/bbit/dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: bbit-phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+volumes:
+  dbdata:
